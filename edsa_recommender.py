@@ -27,7 +27,7 @@
 """
 # Streamlit dependencies
 import streamlit as st
-
+import requests
 # Data handling dependencies
 import pandas as pd
 import numpy as np
@@ -36,16 +36,41 @@ import numpy as np
 from utils.data_loader import load_movie_titles
 from recommenders.collaborative_based import collab_model
 from recommenders.content_based import content_model
+from streamlit_lottie import st_lottie
+from streamlit_option_menu import option_menu 
+from PIL import Image
+
+# This command allows the app to use wide mode of the screen.
+st. set_page_config(layout="wide")
+
+# Use local CSS to sort the styling of the contact form
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+
+local_css("style/style.css")
 
 # Data Loading
 title_list = load_movie_titles('resources/data/movies.csv')
 
+# Function to access the json files of the lottie animations
+def load_lottieurl(url):
+				r = requests.get(url)
+				if r.status_code != 200:
+					return None
+				return r.json()
 # App declaration
 def main():
-
+    # Function to access the json files of the lottie animations
+	
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Recommender System","Solution Overview"]
+    logo = Image.open('resources/imgs/Image_header.png')
+    st.sidebar.image('resources/imgs/ML SOLUTIONS.png', use_column_width=True)
+    #st.background.image('resources/imgs/ML SOLUTIONS(2).png', use_column_width=True)
+
+    page_options = ["Recommender System","Solution Overview",'About Us','Contact Us']
 
     # -------------------------------------------------------------------
     # ----------- !! THIS CODE MUST NOT BE ALTERED !! -------------------
@@ -103,6 +128,73 @@ def main():
     if page_selection == "Solution Overview":
         st.title("Solution Overview")
         st.write("Describe your winning approach on this page")
+
+    if page_selection == "About Us":
+        st.write("---")
+        left_column, right_column = st.columns(2)
+        with right_column:
+            st.header("Who we are")
+            st.subheader("@ML Solutions")
+            st.write("""ML Solutions partners with many companies across Africa ,helping them by building systems to better serve their custumers.We specialize in machine learning:Advanced regression,Classification, and Unsupervised Learning.We believe that Machine Learning is one of the most powerful skill used to extend economic opportunities.As we’ve grown,we believe in the importance of education.We have a strong focus on creating job opportunities through learnerships and graduate programmes.""")
+        
+        with left_column:
+			# Loading the animation in the "Get in touch with us!" section.
+            contact_animation = load_lottieurl("https://assets6.lottiefiles.com/packages/lf20_v1yudlrx.json")
+            st_lottie(contact_animation, height=300, key="coding")
+        st.write("---")
+
+		# Details of the team
+		#with st.container():
+        st.subheader('Team ML Solutions')
+        
+        
+        left_column, right_column = st.columns(2)
+        with left_column:
+            st.info("##### Lebogang Gift Molepo ")
+            st.write("""Board of Director
+				\nlebohang.molepo@solutions.co.za""")
+					 
+            st.info("##### Mbalenhle Malinga")
+            st.write("""Web App Developer
+				\nmbalenhle.malinga@solutions.co.za""")
+                
+            st.info("##### Mike Ngwenya")
+            st.write("""Web App Developer Assistant
+				\nmike.ngwenya@solutions.co.za""")
+			
+        with right_column:
+            st.info("##### Atlegang Mogane")
+            st.write("""Data Scientist
+				\natlegang.mogane@solutions.co.za""")
+            
+            st.info("##### Alette Baloyi ")
+            st.write("""Data Analyst
+				\nalette.baloyi@solutions.co.za""")					 
+				
+
+        st.write("---")
+
+	# Contact form for queries.
+    if page_selection == "Contact Us":
+        st.title(":mailbox: Get In Touch With Us!")
+        contact_form = """
+				<form action="https://formsubmit.co/mikelacoste25@gmail.com" method="POST">
+					<input type="hidden" name="_captcha" value="false">
+					<input type="text" name="name" placeholder="Your name" required>
+					<input type="email" name="email" placeholder="Your email" required>
+					<textarea name="message" placeholder="Your message here"></textarea>
+					<button type="submit">Send</button>
+				</form>
+				"""
+
+        st.markdown(contact_form, unsafe_allow_html=True)
+
+				# Use Local CSS File
+        def local_css(file_name):
+            with open(file_name) as f:
+                st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+        local_css("style/style.css")
 
     # You may want to add more sections here for aspects such as an EDA,
     # or to provide your business pitch.
