@@ -67,7 +67,7 @@ def main():
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
     logo = Image.open('resources/imgs/Image_header.png')
-    st.sidebar.image('resources/imgs/ML SOLUTIONS.png', use_column_width=True)
+    st.sidebar.image('resources/imgs/ML SOLUTIONS (2).png', use_column_width=True)
     #st.background.image('resources/imgs/ML SOLUTIONS(2).png', use_column_width=True)
 
     page_options = ["Recommender System","Solution Overview",'About Us','Contact Us']
