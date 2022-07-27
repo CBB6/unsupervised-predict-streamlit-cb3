@@ -60,6 +60,12 @@ def load_lottieurl(url):
 				if r.status_code != 200:
 					return None
 				return r.json()
+
+#Dataframes
+imdb = pd.read_csv('./resources/data/imdb_data.csv')
+movies = pd.read_csv('./resources/data/movies.csv')
+tags = pd.read_csv('./resources/data/tags.csv')
+
 # App declaration
 def main():
     # Function to access the json files of the lottie animations

@@ -55,6 +55,7 @@ def data_preprocessing(subset_size):
     """
     # Split genre data into individual words.
     movies['keyWords'] = movies['genres'].str.replace('|', ' ')
+    movies['genres'] = movies['genres'].apply(str).apply(lambda x: x.split('|'))
     # Subset of the data
     movies_subset = movies[:subset_size]
     return movies_subset
