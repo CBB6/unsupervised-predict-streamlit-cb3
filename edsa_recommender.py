@@ -41,7 +41,7 @@ from streamlit_option_menu import option_menu
 from PIL import Image
 
 # This command allows the app to use wide mode of the screen.
-st. set_page_config(layout="wide")
+#st. set_page_config(layout="wide")
 
 # Use local CSS to sort the styling of the contact form
 def local_css(file_name):
@@ -133,8 +133,43 @@ def main():
     # ------------- SAFE FOR ALTERING/EXTENSION -------------------
     if page_selection == "Solution Overview":
         st.title("Solution Overview")
-        st.write("Describe your winning approach on this page")
+        st.info("##### On this section we going are through visuals used to explore how the data is distributed ")
+        
+        #Insert ratings graphs 
+        ratings = Image.open('resources/visuals/ratings_vs_average.png')
+        st.subheader("Average-rating vs Rating plots showing the distribution of ratings")
+        st.image(ratings, width = None)
+        st.write("The plots show that the rating distribution is different. When the rating is taken without the average, there are a large number of rated movies, which can lead to the bias of thinking a movie is highly rated when it was only rated by a few people. The change has been effected into the new_df, where inactive users and low rated movies are removed.")
 
+        #Insert rating frequency of all movies
+        rating_frequency=Image.open('resources/visuals/rating_freq.png')
+        st.subheader("Plot showing the distribution of rating frequency")
+        st.image(rating_frequency, width = None)
+        st.write("The distribution of movie ratings frequently satisfies a property known as the long-tail property in real-world settings. The long tail property is supported by two hypotheses: the first is that the majority of consumers consistently follow the crowd and only a minority are interested in niche content; the second is that everyone is a bit eccentric, consuming both popular and specialty products. We discovered that the first hypothesis was correct. The vast majority of movies are rarely rated. As a result, the underlying ratings have a highly skewed distribution.")
+
+        #Insert the wordclod for actors
+        wordcloud_actors=Image.open('resources/visuals/actors.png')
+        st.subheader('Wordcloud showing the most frequently searched actors')
+        st.image(wordcloud_actors, width = None)
+        st.write('According to the wordcloud,it is clear that users primarily look for actors such as Eddie Murphy, Cameron Diaz, and Mike Myers.')
+
+        #Content Based filtering vs Collaborative
+        st.info('#### Content Based Filtering vs Collaborative Based Filtering')
+        left_column, right_column = st.columns(2)
+        with left_column:
+            st.subheader('_*Content Based Filtering*_')
+            st.write('Content-based filtering method utilizes product features/attributes to recommend movies similar to what the user likes, based on other users’ previous movies or explicit feedback such as rating on the movie.This filter helps in avoiding cold start for any new movies as it doesn’t rely on other users feedback, it can recommend movies based on similarity factor. However, content based filtering needs a lot of domain knowledge so that the recommendations made are 100 percent accurate.')
+        with right_column:
+            Content=Image.open('resources/visuals/Content.png')
+            st.image(Content, width = None)
+        
+        with right_column:
+            st.subheader('_Collaborative Based Filtering_')
+            st.write('The collaborative filtering method predicts (filters) the interests of a user on a movie by collecting preferences information from many other users (collaborating). The assumption behind the collaborative filtering method is that if a person P1 has the same opinion as another person P2 on an issue, P1 is more likely to share P2’s opinion on a different issue than that of a randomly chosen person.')
+        with left_column:
+            Collaborative=Image.open('resources/visuals/Collaborative.png')
+            st.image(Collaborative, width = None)   
+            
     if page_selection == "About Us":
         st.write("---")
         left_column, right_column = st.columns(2)
