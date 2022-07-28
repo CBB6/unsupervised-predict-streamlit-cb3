@@ -136,19 +136,19 @@ def main():
         st.info("##### On this section we going are through visuals used to explore how the data is distributed ")
         
         #Insert ratings graphs 
-        ratings = Image.open('resources/visuals/ratings_vs_average.png')
+        ratings = Image.open('resources/visuals/ratings_vs_average.PNG')
         st.subheader("Average-rating vs Rating plots showing the distribution of ratings")
         st.image(ratings, width = None)
         st.write("The plots show that the rating distribution is different. When the rating is taken without the average, there are a large number of rated movies, which can lead to the bias of thinking a movie is highly rated when it was only rated by a few people. The change has been effected into the new_df, where inactive users and low rated movies are removed.")
 
         #Insert rating frequency of all movies
-        rating_frequency=Image.open('resources/visuals/rating_freq.png')
+        rating_frequency=Image.open('resources/visuals/rating_freq.PNG')
         st.subheader("Plot showing the distribution of rating frequency")
         st.image(rating_frequency, width = None)
         st.write("The distribution of movie ratings frequently satisfies a property known as the long-tail property in real-world settings. The long tail property is supported by two hypotheses: the first is that the majority of consumers consistently follow the crowd and only a minority are interested in niche content; the second is that everyone is a bit eccentric, consuming both popular and specialty products. We discovered that the first hypothesis was correct. The vast majority of movies are rarely rated. As a result, the underlying ratings have a highly skewed distribution.")
 
         #Insert the wordclod for actors
-        wordcloud_actors=Image.open('resources/visuals/actors.png')
+        wordcloud_actors=Image.open('resources/visuals/actors.PNG')
         st.subheader('Wordcloud showing the most frequently searched actors')
         st.image(wordcloud_actors, width = None)
         st.write('According to the wordcloud,it is clear that users primarily look for actors such as Eddie Murphy, Cameron Diaz, and Mike Myers.')
