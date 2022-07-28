@@ -30,9 +30,11 @@ Below is a high-level description of the contents within this repo:
 | `edsa_recommender.py`                 | Base Streamlit application definition.                            |
 | `recommenders/collaborative_based.py` | Simple implementation of collaborative filtering.                 |
 | `recommenders/content_based.py`       | Simple implementation of content-based filtering.                 |
-| `resources/data/`                     | Sample movie and rating data used to demonstrate app functioning. |
+| `resources/data/`                     | Sample movie,rating and tag data used to demonstrate app.         |
 | `resources/models/`                   | Folder to store model and data binaries if produced.              |
 | `utils/`                              | Folder to store additional helper functions for the Streamlit app |
+| `notebooks/`                          | Folder consisting of jupyter notebooks used for data analysis.    |
+
 
 ## Usage Instructions
 #### Creating a copy of this repo
