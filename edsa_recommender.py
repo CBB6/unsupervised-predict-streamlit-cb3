@@ -167,7 +167,7 @@ def main():
             st.subheader('_Collaborative Based Filtering_')
             st.write('The collaborative filtering method predicts (filters) the interests of a user on a movie by collecting preferences information from many other users (collaborating). The assumption behind the collaborative filtering method is that if a person P1 has the same opinion as another person P2 on an issue, P1 is more likely to share P2’s opinion on a different issue than that of a randomly chosen person.')
         with left_column:
-            Collaborative=Image.open('resources/visuals/Collaborative.png')
+            Collaborative=Image.open('resources/visuals/collaborative.png')
             st.image(Collaborative, width = None)   
             
     if page_selection == "About Us":
